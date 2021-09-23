@@ -1,32 +1,31 @@
 import "./App.css";
+import { Fragment } from "react";
+import { Route, Switch } from "react-router-dom";
+import SubscriptionPage from "./pages/Subscription";
+import WelcomePage from "./pages/Welcome";
+import DiscordHelpPage from "./pages/DiscordHelp";
+import MainNavigation from "./components/layout/MainNavigation";
+import GovernancePage from "./pages/Governance";
 
 function App() {
   return (
-    <div className="App">
-      <iframe
-        title="gInformatique"
-        className="mj-w-res-iframe"
-        frameBorder="0"
-        scrolling="no"
-        marginHeight="0"
-        marginWidth="0"
-        src="https://app.mailjet.com/widget/iframe/6iJy/KE7"
-        width="100%"
-        height="400px"
-      ></iframe>
-
-      <iframe
-        title="gFinance"
-        className="mj-w-res-iframe"
-        frameBorder="0"
-        scrolling="no"
-        marginHeight="0"
-        marginWidth="0"
-        src="https://app.mailjet.com/widget/iframe/6iJy/KEF"
-        width="100%"
-        height="400px"
-      ></iframe>
-    </div>
+    <Fragment>
+      <MainNavigation />
+      <Switch>
+        <Route path="/" exact>
+          <WelcomePage />
+        </Route>
+        <Route path="/inscriptions">
+          <SubscriptionPage />
+        </Route>
+        <Route path="/discord">
+          <DiscordHelpPage />
+        </Route>
+        <Route path="/gouvernance">
+          <GovernancePage />
+        </Route>
+      </Switch>
+    </Fragment>
   );
 }
 
